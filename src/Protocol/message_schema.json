@@ -1,0 +1,39 @@
+{
+  "type" : "cluster_update",
+  "timestamp" : "2026_08_31T14:23:00",
+  "cluster_state" :
+  {
+    "total_Node" : 5,
+    "leader_Id" : 3,
+    "current_term" : 7
+  },
+
+
+  "Nodes" :
+  [
+    {
+      "ID" : 1,
+      "IP" : "192.34.1.10",
+      "port" : 8080,
+      "state" : "follower",
+      "term" : 7
+    },
+
+    {
+      "ID" : 2,
+      "IP" : "192.34.1.11",
+      "port" : 8080,
+      "state" : "follower",
+      "term" : 7
+    },
+
+
+    {
+      "ID" : 3,
+      "IP" : "192.34.1.12",
+      "port" : 8080,
+      "state" : "leader",
+      "term" : 7
+    }
+  ]
+}
