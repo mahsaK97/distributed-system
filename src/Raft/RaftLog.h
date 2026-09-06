@@ -1,15 +1,17 @@
+#progma once
+
 #include <vector>
 #include "../Protocol/LogEntry.h"
 
 
-class RaftNode
+class RaftLog
 {
 private:
     std::vector <LogEntry> Log;
 
 
-    int commiitIndex;
-    int lastApplied;
+    int commitIndex;
+    int lastapplied;
 
 };
 

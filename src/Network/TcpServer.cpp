@@ -1,6 +1,6 @@
 #include <arpa/inet.h>
 #include <string>
-#include <sys/socket>
+#include <sys/socket.h>
 
 
 
@@ -11,7 +11,7 @@ void sendMassege(int socket_fd, const std::string &jsonpayload)
 
 
     send(socket_fd , &networkLength , sizeof(networkLength), 0);
-    send(socket_fd , &jsonpayload.c_srt() ,jsonpayload.size(), 0);
+    send(socket_fd , jsonpayload.c_srt() ,jsonpayload.size(), 0);
 
 
 }

@@ -6,6 +6,6 @@
 struct LogEntry
 {
     int index;
-    intterm;
+    int term;
     std::string command;
 };

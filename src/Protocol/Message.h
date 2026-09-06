@@ -17,7 +17,7 @@ struct RequestVote
 struct RequestVoteReply
 {
     int term;
-    bool VoteGranted;
+    bool voteGranted;
 
 };
 
@@ -40,16 +40,16 @@ struct AppendEntries
 struct AppendEntriesReply
 {
     int term;
-    bool Succss;
+    bool success;
 
 };
 
 struct  MessageHeader
 {
-    int sender_ID;
-    int receiver_ID;
+    int sender_id;
+    int receiver_id;
     int message_type;
-    int message_ID;
+    int message_id;
     int term;
     int payload_size;
 
