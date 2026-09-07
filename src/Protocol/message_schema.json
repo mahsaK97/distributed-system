@@ -1,14 +1,13 @@
 {
   "type" : "cluster_update",
-  "timestamp" : "2026_08_31T14:23:00",
+  "timestamp" : "2026-08-31T14:23:00Z"ُ,
   "cluster_state" :
   {
     "total_node" : 5,
     "leader_id" : 3,
     "current_term" : 7
   },
-
-git 
+  
   "Nodes" :
   [
     {

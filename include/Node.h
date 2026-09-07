@@ -20,13 +20,3 @@ struct Node
 
 };
 
-
-enum class MessageType
-{
-
-     RequestVote,
-     RequestVoteReply,
-     AppendEntries,
-     AppendEntriesReply
-
-};

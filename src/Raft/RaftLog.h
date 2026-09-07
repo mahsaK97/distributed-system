@@ -1,4 +1,4 @@
-#progma once
+#pragma once
 
 #include <vector>
 #include "../Protocol/LogEntry.h"

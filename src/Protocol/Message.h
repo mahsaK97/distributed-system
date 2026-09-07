@@ -63,6 +63,16 @@ AppendEntries,
 AppendEntriesReply>;
 
 
+enum class MessageType
+{
+
+     RequestVote,
+     RequestVoteReply,
+     AppendEntries,
+     AppendEntriesReply
+
+};
+
 
 struct Message
 {
