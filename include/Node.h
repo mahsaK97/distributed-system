@@ -1,21 +1,40 @@
+#pragma once
 
+#include <string>
 
 enum class NodeState
 {
     Follower,
     Leader,
+    Condidate,
     Down
 
 
 };
 
-struct Node
+class Node
 {
+public:
+    Node(int id, const std::string &ip, int port)
+
+    void becameLeader();
+    void becameFollower();
+    void becameCandidate();
+
+
+    NodeState getState() const {return state;}
+    int getterm() const {return term;}
+
+
+private:
     int id;
-    char ip[16];
     int port;
-    NodeState state;
     int term;
+
+    std::string ip;
+
+    NodeState state;
+
 
 
 };

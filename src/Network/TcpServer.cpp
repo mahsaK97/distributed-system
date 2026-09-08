@@ -4,7 +4,7 @@
 
 
 
-void sendMassege(int socket_fd, const std::string &jsonpayload)
+void sendMessege(int socket_fd, const std::string &jsonpayload)
 {
     uint32_t messageLength  = jsonpayload.size();
     uint32_t networkLength =  htonl(messageLength);
