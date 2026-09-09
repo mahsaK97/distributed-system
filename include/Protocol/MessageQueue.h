@@ -23,8 +23,4 @@ public:
     bool pop(Message &outMessage);
     bool IsEmpty() const;
 
-private:
-    MessageNode *front;
-    MessageNode *back;
-
 };
