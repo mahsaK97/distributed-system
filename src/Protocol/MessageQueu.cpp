@@ -1,4 +1,4 @@
-#include "../../include/MessageQueue.h"
+#include "../../include/Protocol/MessageQueue.h"
 
 
 MessageQueue::MessageQueue()

@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <variant>
-#include "LogEntry.h"
+#include "../../src/Protocol/LogEntry.h"
 
 
 struct RequestVote

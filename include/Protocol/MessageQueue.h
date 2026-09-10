@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Message.h"
+#include "../../src/Node/Node.h"
 
 struct MessageNode
 {
