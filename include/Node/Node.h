@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <random>
 
 enum class NodeState
 {
@@ -24,6 +25,9 @@ public:
 
     NodeState getState() const {return state;}
     int getterm() const {return term;}
+    int getelectionTimeout() const {return electionTimeout;}
+    int getlastheartbeatTime() const {return lastheartbeatTime;}
+    void setlastheartbeatTime(int time) {lastheartbeatTime = time;}
 
 
 private:
@@ -37,6 +41,8 @@ private:
 
     int lastheartbeatTime;
     int electionTimeout;
+
+    static std::mt19937 rng;
 
 
 
