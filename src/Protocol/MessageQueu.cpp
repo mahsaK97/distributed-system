@@ -2,7 +2,7 @@
 
 
 MessageQueue::MessageQueue()
-   : front(nullptr) , back(nullptr){};
+   :front(nullptr) , back(nullptr){};
 
 
 

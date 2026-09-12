@@ -3,15 +3,13 @@
 
 
 
-
-
-
-std::mt19937 Node::rng(std::random_device{}())
+std::mt19937 Node::rng(std::random_device{}());
 Node::Node(int id, const std::string &ip, int port)
-    : id(id) , ip(ip) , port(port) , state(NodeState::Follower) , term(6), lastheartbeatTime(0)
+    :id(id) , ip(ip) , port(port) , state(NodeState::Follower) , term(6), lastheartbeatTime(0)
     {
-        resetelectiiontimeout()
-    }
+        resereletiontimeoute()
+    };
+
 
 
 
@@ -20,6 +18,8 @@ void Node::resereletiontimeout()
     std::uniform_int_distribution<int>dist(5,10);
     electionTimeout =dist(rng);
 }
+
+
 
 
 
@@ -35,7 +35,7 @@ void Node::becameCandidate()
 void Node::becameFollower()
 {
     state = NodeState::Follower;
-    term = newTerm;
+    term = newterm;
     resereletiontimeout();
 
 }

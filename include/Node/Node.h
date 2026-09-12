@@ -16,7 +16,7 @@ enum class NodeState
 class Node
 {
 public:
-    Node(int id, const std::string &ip, int port)
+    Node(int id, const std::string &ip, int port);
 
     void becameLeader();
     void becameFollower();
