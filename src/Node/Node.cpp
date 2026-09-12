@@ -7,7 +7,7 @@ std::mt19937 Node::rng(std::random_device{}());
 Node::Node(int id, const std::string &ip, int port)
     :id(id) , ip(ip) , port(port) , state(NodeState::Follower) , term(6), lastheartbeatTime(0)
     {
-        resereletiontimeoute()
+        resereletiontimeout()
     };
 
 
@@ -24,10 +24,10 @@ void Node::resereletiontimeout()
 
 
 
-void Node::becameCandidate()
+void Node::becameCandidate(int newTerm)
 {
-    state = NodeState::Condidate;
-    term++;
+    state = NodeState::Candidate;
+    term= newTerm;
     resereletiontimeout();
 }
 
@@ -35,7 +35,7 @@ void Node::becameCandidate()
 void Node::becameFollower()
 {
     state = NodeState::Follower;
-    term = newterm;
+    term = term++;
     resereletiontimeout();
 
 }

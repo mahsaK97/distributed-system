@@ -1,18 +1,19 @@
 #include "../include/Node/VirtualClock.h"
 #include "../include/Node/Node.h"
 
+#include <iostream>
 
 
 
 VirtualClock Clock;
 
 
-while(runnig)
+while(running)
 {
     Clock.tick();
 
     if( Node.getState() != NodeState::Leader
-       &&Clock.now() - node.lastheaetbeatTime >node.electionTimeout)
+       &&Clock.now() - node.lastheartbeatTime >node.electionTimeout)
     {
         Node.becameCandidate();
         std::cout <<"election time out! Node" <<Node.id()

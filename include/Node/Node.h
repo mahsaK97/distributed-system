@@ -6,8 +6,8 @@
 enum class NodeState
 {
     Follower,
-    Leader,
     Condidate,
+    Leader,
     Down
 
 
@@ -21,6 +21,7 @@ public:
     void becameLeader();
     void becameFollower();
     void becameCandidate();
+    void resereletiontimeout();
 
 
     NodeState getState() const {return state;}

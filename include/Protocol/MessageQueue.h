@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../src/Node/Node.h"
+#include "../../src/Protocol/MessageQueue.h"
 
 struct MessageNode
 {
