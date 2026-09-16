@@ -6,7 +6,7 @@
 enum class NodeState
 {
     Follower,
-    Condidate,
+    Candidate,
     Leader,
     Down
 
@@ -19,8 +19,8 @@ public:
     Node(int id, const std::string &ip, int port);
 
     void becameLeader();
-    void becameFollower();
-    void becameCandidate();
+    void becameFollower(int newTerm);
+    void becameCandidate(int newTerm);
     void resereletiontimeout();
 
 
