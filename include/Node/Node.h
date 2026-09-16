@@ -28,6 +28,7 @@ public:
     int getterm() const {return term;}
     int getelectionTimeout() const {return electionTimeout;}
     int getlastheartbeatTime() const {return lastheartbeatTime;}
+    int getid() const {return id;}
     void setlastheartbeatTime(int time) {lastheartbeatTime = time;}
 
 

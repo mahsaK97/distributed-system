@@ -1,20 +1,63 @@
 #include <arpa/inet.h>
 #include <string>
+#include <cstdint>
 #include <sys/socket.h>
 
 
-std::string receiveMessage(int socket_fd)
+bool receiveAll(int socket_fd, void *data, size_t length)
+{
+    char *buffer = static_cast<char*>(data);
+    size_t totalReceive =0;
+
+    while(totalReceive < length)
+    {
+        size_t received = recc(
+                               socket_fd,
+                               buffer+totalReceive,
+                               length-totalReceive,
+                               0
+                               );
+        if(received <= 0)
+        {
+            return false;
+        }
+
+         totalReceive+=received;
+    }
+
+    return true;
+
+    }
+}
+
+
+bool receiveMessage(int socket_fd, std::string &messages)
 {
     uint32_t networkLength;
-    recv(socket_fd, &networkLength, sizeof(networkLength), MSG_WAITALL);
+
+    if(!receiveAll(socket_fd, &networkLength, sizeof(networkLength)))
+    {
+        return false;
+    }
+
 
     uint32_t messageLength = ntohl(networkLength);
 
-
-    std::string buffer(messageLength , '\0');
-    recv(socket_fd , &buffer[0], messageLength , MSG_WAITALL);
+    constexpr unit32_t MAX_MESSAGE_SIZE =1024 *1024;
 
 
-    return buffer;
+    if(messagelength > MAX_MESSAGE_SIZE)
+    {
+        return false;
+    }
+
+    messages.resize(messagelength);
+
+    if(!receiveAll(socket_fd , messages.data() ,messageslength))
+    {
+        return false;
+    }
+
+    return true;
 
 }
