@@ -11,7 +11,7 @@ bool receiveAll(int socket_fd, void *data, size_t length)
 
     while(totalReceive < length)
     {
-        size_t received = recc(
+        size_t received = recv(
                                socket_fd,
                                buffer+totalReceive,
                                length-totalReceive,
@@ -28,7 +28,6 @@ bool receiveAll(int socket_fd, void *data, size_t length)
     return true;
 
     }
-}
 
 
 bool receiveMessage(int socket_fd, std::string &messages)
@@ -43,7 +42,7 @@ bool receiveMessage(int socket_fd, std::string &messages)
 
     uint32_t messageLength = ntohl(networkLength);
 
-    constexpr unit32_t MAX_MESSAGE_SIZE =1024 *1024;
+    constexpr uint32_t MAX_MESSAGE_SIZE =1024 *1024;
 
 
     if(messagelength > MAX_MESSAGE_SIZE)

@@ -2,9 +2,9 @@
 #include <string>
 #include <cstdint>
 #include <sys/socket.h>
+#include <cerrno>
 
-
-bool senAll(int socket_fd, const void *data, size_t length)
+bool sendAll(int socket_fd, const void *data, size_t length)
 {
     const char *buffer= static_cast<const char*> (data);
     size_t totalsent = 0;
@@ -20,26 +20,37 @@ bool senAll(int socket_fd, const void *data, size_t length)
 
 
 
-        if(sent <= 0)
+        if(sent < 0)
+        {
+            if(errno == EINTR || errno == EAGAIN || errno == EWOULDBLOCK)
+            {
+                continue;
+            }
+            return false;
+        }
+        if(sent ==0)
         {
             return false;
         }
-        totalsent+=sent;
+
+
+        totalsent+=static_cast<size_t>(sent);
     }
-    return true;
+        return true;
+}
 
 
-    bool sendMessege(socket_fd , std::string &jsonpayload)
-    {
-        unit32_t messageLength = jsonpayload.size();
-        unit32_t networkLength = hntol(messageLength);
+bool sendMessege(int socket_fd , std::string &jsonpayload)
+{
+        uint32_t messageLength = jsonpayload.size();
+        uint32_t networkLength = htonl(messageLength);
 
         if (!sendAll(socket_fd, &networkLength, sizeof(networkLength)))
         {
             return false;
         }
 
-        if(!senAll(socket_fd, jsonpayload.data(),jsonpayload.size()))
+        if(!sendAll(socket_fd, jsonpayload.data(),jsonpayload.size()))
         {
             return false;
         }
@@ -47,6 +58,5 @@ bool senAll(int socket_fd, const void *data, size_t length)
 
         return true;
 
-    }
-
 }
+

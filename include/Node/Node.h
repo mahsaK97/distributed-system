@@ -20,8 +20,8 @@ public:
 
     void becameLeader();
     void becameFollower(int newTerm);
-    void becameCandidate(int newTerm);
-    void resereletiontimeout();
+    void becameCandidate();
+    void resetElectionTimeout();
 
 
     NodeState getState() const {return state;}
@@ -29,6 +29,8 @@ public:
     int getelectionTimeout() const {return electionTimeout;}
     int getlastheartbeatTime() const {return lastheartbeatTime;}
     int getid() const {return id;}
+    int getport() const{return port;}
+    const std::string  &getip() const {return ip;}
     void setlastheartbeatTime(int time) {lastheartbeatTime = time;}
 
 
