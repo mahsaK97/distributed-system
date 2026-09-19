@@ -2,7 +2,7 @@
 
 
 MessageQueue::MessageQueue()
-   :front(nullptr) , back(nullptr){};
+   :front(nullptr) , back(nullptr){}
 
 
 
@@ -19,7 +19,7 @@ MessageQueue::~MessageQueue()
 
 }
 
-void MessageQueue::push(const MessageQueue &message)
+void MessageQueue::push(const Message &message)
 {
     MessageNode *newNode = new MessageNode{message , nullptr};
 
@@ -45,8 +45,8 @@ bool MessageQueue::pop(Message &outMessage)
         return false;
     }
 
-    outMessage =fron->message;
-    MessageNode *temp = fromt;
+    outMessage =front->message;
+    MessageNode *temp = front;
     front = front->next;
 
     if(front == nullptr)
@@ -60,7 +60,7 @@ bool MessageQueue::pop(Message &outMessage)
 
 bool MessageQueue::IsEmpty() const
 {
-    return front = nullptr;
+    return front == nullptr;
 }
 
 

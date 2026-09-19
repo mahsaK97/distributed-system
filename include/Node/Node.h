@@ -25,12 +25,12 @@ public:
 
 
     NodeState getState() const {return state;}
-    int getterm() const {return term;}
+    int getTerm() const {return term;}
     int getelectionTimeout() const {return electionTimeout;}
     int getlastheartbeatTime() const {return lastheartbeatTime;}
-    int getid() const {return id;}
-    int getport() const{return port;}
-    const std::string  &getip() const {return ip;}
+    int getId() const {return id;}
+    int getPort() const{return port;}
+    const std::string  &getIp() const {return ip;}
     void setlastheartbeatTime(int time) {lastheartbeatTime = time;}
 
 

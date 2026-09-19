@@ -7,7 +7,7 @@ public:
 
 
     void tick();
-    int now () const;
+    int now ()const;
     void reset();
 
 private:

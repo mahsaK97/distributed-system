@@ -4,7 +4,7 @@
 
 VirtualClock::VirtualClock()
 
-    :currentTime(0);
+    :currentTime(0)
 {
 }
 

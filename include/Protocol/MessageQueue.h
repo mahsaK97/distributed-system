@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../src/Protocol/MessageQueue.h"
+#include "../Message.h"
 
 struct MessageNode
 {
@@ -19,8 +19,12 @@ public:
     ~MessageQueue();
 
 
-    void push(cons Messages &message);
+    void push(const Messages &message);
     bool pop(Message &outMessage);
-    bool IsEmpty() const;
+    bool IsEmpty()const;
+
+private:
+    MessageNode *front;
+    MessageNode *back;
 
 };

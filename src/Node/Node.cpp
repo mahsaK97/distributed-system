@@ -1,14 +1,14 @@
-#include <../../include/Node/Node.h>
+#include "../../include/Node/Node.h"
 
 
 
 
 std::mt19937 Node::rng(std::random_device{}());
 Node::Node(int id, const std::string &ip, int port)
-    :id(id) , ip(ip) , port(port) , state(NodeState::Follower) , term(0), lastheartbeatTime(0)
+    :id(id) ,port(port)  , term(0) , ip(ip), state(NodeState::Follower) , lastheartbeatTime(0)
     {
-        resetElectionTimeout()
-    };
+        resetElectionTimeout();
+    }
 
 
 
@@ -27,7 +27,7 @@ void Node::resetElectionTimeout()
 void Node::becameCandidate()
 {
     state = NodeState::Candidate;
-    term= term++;
+    term++;
     resetElectionTimeout();
 }
 
@@ -36,7 +36,8 @@ void Node::becameFollower(int newTerm)
 {
     state = NodeState::Follower;
     term = newTerm;
-    resetEleconTimeout();
+    resetElectionTimeout();
+
 
 }
 

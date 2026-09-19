@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <variant>
-#include "../../src/Protocol/LogEntry.h"
+#include "../LogEntry.h"
 
 
 struct RequestVote
@@ -27,7 +27,7 @@ struct AppendEntries
     int leaderID;
 
 
-    int PrevLogIndex;
+    int prevLogIndex;
     int prevLogTerm;
 
 
@@ -48,7 +48,7 @@ struct  MessageHeader
 {
     int sender_id;
     int receiver_id;
-    int message_type;
+    MessageType message_type;
     int message_id;
     int term;
     int payload_size;
