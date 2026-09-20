@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Message.h"
+#include "Message.h"
 
 struct MessageNode
 {
@@ -19,7 +19,7 @@ public:
     ~MessageQueue();
 
 
-    void push(const Messages &message);
+    void push(const Message &message);
     bool pop(Message &outMessage);
     bool IsEmpty()const;
 

@@ -19,7 +19,7 @@ while(running)
     Clock.tick();
 
     if( node.getState() != NodeState::Leader
-       &&Clock.now() - node.lastheartbeatTime >node.electionTimeout)
+       && Clock.now() - node.getlastheartbeatTime() >node.getelectionTimeout())
     {
         node.becameCandidate();
         std::cout <<"election time out! Node" <<node.getId()
