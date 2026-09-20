@@ -1,7 +1,19 @@
 #pragma once
 #include <vector>
 #include <variant>
-#include "../LogEntry.h"
+#include "LogEntry.h"
+
+
+
+enum class MessageType
+{
+
+     RequestVote,
+     RequestVoteReply,
+     AppendEntries,
+     AppendEntriesReply
+
+};
 
 
 struct RequestVote
@@ -61,18 +73,6 @@ RequestVote,
 RequestVoteReply,
 AppendEntries,
 AppendEntriesReply>;
-
-
-enum class MessageType
-{
-
-     RequestVote,
-     RequestVoteReply,
-     AppendEntries,
-     AppendEntriesReply
-
-};
-
 
 struct Message
 {

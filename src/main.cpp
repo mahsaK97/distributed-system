@@ -22,8 +22,8 @@ while(running)
        && Clock.now() - node.getlastheartbeatTime() >node.getelectionTimeout())
     {
         node.becameCandidate();
-        std::cout <<"election time out! Node" <<node.getId()
-        <<"is now a candidate" << std::endl;
+        std::cout <<"election time out! Node " <<node.getId()
+        <<" is now a candidate" << std::endl;
     }
 
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
