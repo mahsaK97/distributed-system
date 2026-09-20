@@ -40,7 +40,7 @@ bool sendAll(int socket_fd, const void *data, size_t length)
 }
 
 
-bool sendMessege(int socket_fd , std::string &jsonpayload)
+bool sendMessage(int socket_fd , std::string &jsonpayload)
 {
         uint32_t messageLength = jsonpayload.size();
         uint32_t networkLength = htonl(messageLength);
