@@ -1,8 +1,16 @@
 #include <arpa/inet.h>
+#include <sys/socket.h>
 #include <string>
 #include <cstdint>
-#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <cstring>
+#include <iostream>
 #include <cerrno>
+
+
+
+#include "../../include/Network/TcpServer.h"
 
 bool sendAll(int socket_fd, const void *data, size_t length)
 {
@@ -17,8 +25,6 @@ bool sendAll(int socket_fd, const void *data, size_t length)
                             length - totalsent,
                             0
                             );
-
-
 
         if(sent < 0)
         {
@@ -60,3 +66,70 @@ bool sendMessage(int socket_fd , std::string &jsonpayload)
 
 }
 
+
+TcpServer::TcpServer(int port):
+    port(port), listen_fd(-1)
+{
+
+}
+
+TcpServer::~TcpServer()
+{
+    stop();
+}
+
+bool TcpServer::start()
+{
+    listen_fd = socket(AF_INET, SOCK_STREAM, 0)
+    if(listen_fd < 0)
+    {
+        std::cerr<< "FAILD TO CREATE SOCKET.\n" << std::endl;
+        return false;
+    }
+
+    int opt =1;
+    setsocketopt=(listern_fd, SOL_SOCKET, SO_REUSEADDER,&OPT, sizeof(opt));
+    sockaddr_in address {};
+    address.sin_family =AF_INET;
+    address.sin_addr.s_addr = INADD_ANY;
+    address.sin_port = htons(port);
+
+
+   if(bind(listen_fd,(sockaddr*)&address, sizeof(address)) < 0)
+   {
+       std::cerr << "BIND FAILD ON PORT." << std::endl;
+       return false;
+
+   }
+
+
+   if(listen(listen_fd,10) < 0)
+   {
+       std::cerr << "LISTEN FAILD." <<std::endl;
+       return false;
+
+   }
+
+   return true;
+
+}
+
+
+int TcpServer::acceptConnection()
+{
+    sockaddre_in clientAddress{};
+    socklen_t addrLen = sizeof(clientAdderss);
+
+    int client_fd = accept(listen_fd, (sockaddr*)&clientAddress, sizeof(addrLen));
+    return client_fd;
+}
+
+
+void TcpServer::stop()
+{
+    if(listen_fd >= 0)
+    {
+        close(listen_fd);
+        listen_fd =-1;
+    }
+}

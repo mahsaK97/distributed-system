@@ -2,6 +2,13 @@
 #include <string>
 #include <cstdint>
 #include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <iostream>
+
+
+
+#include "../../include/Network/TcpClient.h"
 
 
 bool receiveAll(int socket_fd, void *data, size_t length)
@@ -60,3 +67,39 @@ bool receiveMessage(int socket_fd, std::string &messages)
     return true;
 
 }
+
+int TcpClient::connectTo(const std::string &ip , int port)
+{
+    int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if(sock_fd > 0)
+    {
+        return -1;
+    }
+
+
+    sockaddr_in serverAddress{};
+    serverAddress.sin_family = AF_INET;
+    serverAddress.sin_port =htons(port);
+
+    if(inet_pton(AF_INET, ip.c_str(), &serveraddress) <= 0)
+    {
+        close(sock_fd);
+        return -1;
+    }
+
+    if(connect(sock_fd, (sockaddr*)&serveraddress, sizeof(serverAddress)) < 0)
+    {
+        close(sock_fd);
+        return -1;
+
+    }
+
+    return sock_fd;
+}
+
+
+
+
+
+
+
