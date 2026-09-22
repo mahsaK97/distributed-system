@@ -49,7 +49,7 @@ bool sendAll(int socket_fd, const void *data, size_t length)
 bool sendMessage(int socket_fd , std::string &jsonpayload)
 {
         uint32_t messageLength = jsonpayload.size();
-        uint32_t networkLength = htonl(messageLength);
+        uint32_t networkLength = ht(messageLength);
 
         if (!sendAll(socket_fd, &networkLength, sizeof(networkLength)))
         {
@@ -80,7 +80,7 @@ TcpServer::~TcpServer()
 
 bool TcpServer::start()
 {
-    listen_fd = socket(AF_INET, SOCK_STREAM, 0)
+    listen_fd = socket(AF_INET, SOCK_STREAM, 0);
     if(listen_fd < 0)
     {
         std::cerr<< "FAILD TO CREATE SOCKET.\n" << std::endl;
@@ -88,10 +88,10 @@ bool TcpServer::start()
     }
 
     int opt =1;
-    setsocketopt=(listern_fd, SOL_SOCKET, SO_REUSEADDER,&OPT, sizeof(opt));
+    setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR,&OPT, sizeof(opt));
     sockaddr_in address {};
     address.sin_family =AF_INET;
-    address.sin_addr.s_addr = INADD_ANY;
+    address.sin_addr.s_addr = INADDR_ANY;
     address.sin_port = htons(port);
 
 
@@ -117,10 +117,10 @@ bool TcpServer::start()
 
 int TcpServer::acceptConnection()
 {
-    sockaddre_in clientAddress{};
-    socklen_t addrLen = sizeof(clientAdderss);
+    sockaddr_in clientAddress{};
+    socklen_t addrLen = sizeof(clientAddress);
 
-    int client_fd = accept(listen_fd, (sockaddr*)&clientAddress, sizeof(addrLen));
+    int client_fd = accept(listen_fd, (sockaddr*)&clientAddress, &addrLen);
     return client_fd;
 }
 

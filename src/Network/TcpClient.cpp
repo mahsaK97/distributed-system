@@ -71,7 +71,7 @@ bool receiveMessage(int socket_fd, std::string &messages)
 int TcpClient::connectTo(const std::string &ip , int port)
 {
     int sock_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if(sock_fd > 0)
+    if(sock_fd < 0)
     {
         return -1;
     }
