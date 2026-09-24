@@ -81,13 +81,13 @@ int TcpClient::connectTo(const std::string &ip , int port)
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_port =htons(port);
 
-    if(inet_pton(AF_INET, ip.c_str(), &serveraddress) <= 0)
+    if(inet_pton(AF_INET, ip.c_str(), &serverAddress.sin_addr) <= 0)
     {
         close(sock_fd);
         return -1;
     }
 
-    if(connect(sock_fd, (sockaddr*)&serveraddress, sizeof(serverAddress)) < 0)
+    if(connect(sock_fd, (sockaddr*)&serverAddress, sizeof(serverAddress)) < 0)
     {
         close(sock_fd);
         return -1;

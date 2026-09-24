@@ -15,7 +15,7 @@ Node::Node(int id, const std::string &ip, int port)
 
 void Node::resetElectionTimeout()
 {
-    std::uniform_int_distribution<int>dist(5,10);
+    std::uniform_int_distribution <int> dist(5,10);
     electionTimeout =dist(rng);
 }
 
