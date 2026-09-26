@@ -56,7 +56,21 @@ void RaftNode::handleRequestVoteReply(const RequestVoteReply &reply)
 
     if(reply.term() > self.getTerm())
     {
-        self.becameFollower()
-
+        self.becameFollower(reply.term);
+        return;
     }
+
+    if(reply.voteGranted)
+    {
+        votesReceived++;
+    }
+}
+
+
+bool RaftNode::handleWonElection() const
+{
+    int totalNodes=static_cast<int>(peers.size()) +1;
+    int majority =totalNodes /2 +1;
+    return votesReceived >= majority;
+
 }
