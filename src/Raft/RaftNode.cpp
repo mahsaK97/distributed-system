@@ -1,8 +1,7 @@
-#include "../../include/LogEntry.h"
-
+#include "../../include/Raft/RaftNode.h"
 
 RaftNode::RaftNode(Node &self, std::vector<PeerInfo> peers)
-   :self(self), peers(peers) , votedfor(-1), votesReceive(0)
+   :self(self), peers(peers) , votedfor(-1), votesReceived(0)
    {
 
    }
@@ -40,7 +39,7 @@ RequestVoteReply RaftNode::handleRequestVote(const RequestVote &request)
         votedfor = request.candidateID;
         reply.term = self.getTerm();
         reply.voteGranted =true;
-        return true;
+        return reply;
     }
 
     reply.voteGranted = false;
@@ -49,12 +48,12 @@ RequestVoteReply RaftNode::handleRequestVote(const RequestVote &request)
 
 void RaftNode::handleRequestVoteReply(const RequestVoteReply &reply)
 {
-    if(self.getState() != Node::condidate)
+    if(self.getState() != NodeState::Condidate)
     {
         return;
     }
 
-    if(reply.term() > self.getTerm())
+    if(reply.term > self.getTerm())
     {
         self.becameFollower(reply.term);
         return;
