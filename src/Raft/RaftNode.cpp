@@ -48,7 +48,7 @@ RequestVoteReply RaftNode::handleRequestVote(const RequestVote &request)
 
 void RaftNode::handleRequestVoteReply(const RequestVoteReply &reply)
 {
-    if(self.getState() != NodeState::Condidate)
+    if(self.getState() != NodeState::Candidate)
     {
         return;
     }
@@ -66,7 +66,7 @@ void RaftNode::handleRequestVoteReply(const RequestVoteReply &reply)
 }
 
 
-bool RaftNode::handleWonElection() const
+bool RaftNode::hasWonElection() const
 {
     int totalNodes=static_cast<int>(peers.size()) +1;
     int majority =totalNodes /2 +1;
