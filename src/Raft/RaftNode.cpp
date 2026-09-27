@@ -8,9 +8,10 @@ RaftNode::RaftNode(Node &self, std::vector<PeerInfo> peers)
 
 
 
-void RaftNode::startElection()
+void RaftNode::startElection(int currentTime)
 {
     self.becameCandidate();
+    self.setlastheartbeatTime(int currentTime);
     votedfor = self.getId();
     votesReceived =1;
 }
