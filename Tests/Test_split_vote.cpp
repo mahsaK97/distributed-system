@@ -89,9 +89,9 @@ int main()
 
                 broadcastRequestVote(static_cast<int>(i));
 
-                if (raftNodes[i].hasWonElection())
+                if (nodes[i].getState() == NodeState::Leader)
                 {
-                    nodes[i].becameLeader();
+
                     std::cout << "[tick " << clock.now() << "] Node " << nodes[i].getId()
                               << " WON the election! Now Leader (term " << nodes[i].getTerm() << ")" << std::endl;
                     electionResolved = true;

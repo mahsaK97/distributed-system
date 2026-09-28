@@ -63,6 +63,11 @@ void RaftNode::handleRequestVoteReply(const RequestVoteReply &reply)
     if(reply.voteGranted)
     {
         votesReceived++;
+
+        if(hasWonElection())
+        {
+            self.becameLeader();
+        }
     }
 }
 
