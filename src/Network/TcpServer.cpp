@@ -49,7 +49,7 @@ bool sendAll(int socket_fd, const void *data, size_t length)
 bool sendMessage(int socket_fd , std::string &jsonpayload)
 {
         uint32_t messageLength = jsonpayload.size();
-        uint32_t networkLength = ht(messageLength);
+        uint32_t networkLength = htonl(messageLength);
 
         if (!sendAll(socket_fd, &networkLength, sizeof(networkLength)))
         {
