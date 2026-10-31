@@ -88,7 +88,7 @@ bool TcpServer::start()
     }
 
     int opt =1;
-    setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR,&OPT, sizeof(opt));
+    setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR,&opt, sizeof(opt));
     sockaddr_in address {};
     address.sin_family =AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
