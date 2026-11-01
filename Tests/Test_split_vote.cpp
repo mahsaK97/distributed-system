@@ -95,6 +95,7 @@ int main()
                     std::cout << "[tick " << clock.now() << "] Node " << nodes[i].getId()
                               << " WON the election! Now Leader (term " << nodes[i].getTerm() << ")" << std::endl;
                     electionResolved = true;
+                    break;
                 }
             }
         }
