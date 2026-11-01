@@ -47,7 +47,7 @@ int main()
             if (static_cast<int>(i) == candidateIndex)
                 continue;
 
-            RequestVoteReply reply = raftNodes[i].handleRequestVote(request);
+            RequestVoteReply reply = raftNodes[i].handleRequestVote(request, clock.now());
             raftNodes[candidateIndex].handleRequestVoteReply(reply);
         }
     };
