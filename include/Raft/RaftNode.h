@@ -23,7 +23,7 @@ public:
 
     void startElection(int currentTime);
     RequestVoteReply handleRequestVote(const RequestVote &Request);
-    void handleRequestVoteReply(const RequestVoteReply &Reply);
+    void handleRequestVoteReply(const RequestVoteReply &Reply,int currentTime);
     bool hasWonElection() const;
 
 private:

@@ -17,7 +17,7 @@ void RaftNode::startElection(int currentTime)
 }
 
 
-RequestVoteReply RaftNode::handleRequestVote(const RequestVote &request)
+RequestVoteReply RaftNode::handleRequestVote(const RequestVote &request, int currentTime)
 {
     RequestVoteReply reply;
     reply.term=self.getTerm();
@@ -41,6 +41,7 @@ RequestVoteReply RaftNode::handleRequestVote(const RequestVote &request)
         reply.term = self.getTerm();
         reply.voteGranted =true;
         return reply;
+        self.setlastheartbeatTime(currentTime);
     }
 
     reply.voteGranted = false;
