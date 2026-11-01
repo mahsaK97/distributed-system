@@ -31,7 +31,7 @@ while(running)
     {
         node.becameLeader();
         std::cout << "NODE " <<node.getId() << "WON THE ELECTION! NOW LEADER (TERM "
-        << node.getTerm() << " )." <<std::endl();
+        << node.getTerm() << " )." <<std::endl;
      }
 
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
