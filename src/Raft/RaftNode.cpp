@@ -61,6 +61,12 @@ void RaftNode::handleRequestVoteReply(const RequestVoteReply &reply)
         return;
     }
 
+    if(reply.term < self.getTerm())
+    {
+
+        return;
+    }
+
     if(reply.voteGranted)
     {
         votesReceived++;
