@@ -1,5 +1,7 @@
 #include "../include/Node/VirtualClock.h"
 #include "../include/Node/Node.h"
+#include "../include/Raft/RaftNode.h"
+
 
 #include <iostream>
 #include <thread>
