@@ -22,8 +22,8 @@ public:
     RaftNode(Node &self, std::vector<PeerInfo> peers);
 
     void startElection(int currentTime);
-    RequestVoteReply handleRequestVote(const RequestVote &Request);
-    void handleRequestVoteReply(const RequestVoteReply &Reply,int currentTime);
+    RequestVoteReply handleRequestVote(const RequestVote &Request, int currentTime);
+    void handleRequestVoteReply(const RequestVoteReply &Reply);
     bool hasWonElection() const;
 
 private:
