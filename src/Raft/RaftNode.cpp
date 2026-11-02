@@ -40,8 +40,9 @@ RequestVoteReply RaftNode::handleRequestVote(const RequestVote &request, int cur
         votedfor = request.candidateID;
         reply.term = self.getTerm();
         reply.voteGranted =true;
-        return reply;
         self.setlastheartbeatTime(currentTime);
+        return reply;
+
     }
 
     reply.voteGranted = false;
