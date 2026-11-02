@@ -13,6 +13,7 @@ int main()
 {
     VirtualClock Clock;
     Node node(1, "127.0.0.1" , 8000);
+    RaftNode raftnode(node,{});
     bool running = true;
 
 
