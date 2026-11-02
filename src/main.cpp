@@ -24,11 +24,11 @@ while(running)
     if( node.getState() != NodeState::Leader
        && Clock.now() - node.getlastheartbeatTime() >node.getelectionTimeout())
     {
-        RaftNode.startElection(Clock.now());
+        raftnode.startElection(Clock.now());
         std::cout <<"election time out! Node " <<node.getId()
         <<" is now a candidate" << std::endl;
     }
-    if(node.getState() == NodeState::Candidate && RaftNode.hasWonElection())
+    if(node.getState() == NodeState::Candidate && raftnode.hasWonElection())
     {
         node.becameLeader();
         std::cout << "NODE " <<node.getId() << "WON THE ELECTION! NOW LEADER (TERM "
