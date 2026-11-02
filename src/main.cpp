@@ -31,7 +31,7 @@ while(running)
     if(node.getState() == NodeState::Candidate && raftnode.hasWonElection())
     {
         node.becameLeader();
-        std::cout << "NODE " <<node.getId() << "WON THE ELECTION! NOW LEADER (TERM "
+        std::cout << "NODE " <<node.getId() << " WON THE ELECTION! NOW LEADER (TERM "
         << node.getTerm() << " )." <<std::endl;
      }
 
