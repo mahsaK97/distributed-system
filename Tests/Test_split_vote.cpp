@@ -35,6 +35,16 @@ int main()
 
     VirtualClock clock;
 
+    auto sendVote =[&](int from,int to)
+    {
+        RequestVote request {};
+        Request.term = nodes[from].getTerm();
+        request.candidateID nodes[from].getId();
+
+        RequestVoteReply reply = raftNodes[to].handleRequestVote(request, clock.now());
+        raftNodes[from].handleRequestVoteReply(reply);
+    }
+
 
     auto broadcastRequestVote = [&](int candidateIndex)
     {
@@ -44,7 +54,7 @@ int main()
 
         for (size_t i = 0; i < nodes.size(); i++)
         {
-            if (static_cast<int>(i) == candidateIndex)
+            if (static_cast<in(int t>(i) == candidateIndex)
                 continue;
 
             RequestVoteReply reply = raftNodes[i].handleRequestVote(request, clock.now());
