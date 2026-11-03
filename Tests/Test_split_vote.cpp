@@ -48,17 +48,12 @@ int main()
 
     auto broadcastRequestVote = [&](int candidateIndex)
     {
-        RequestVote request;
-        request.term = nodes[candidateIndex].getTerm();
-        request.candidateID = nodes[candidateIndex].getId();
-
         for (size_t i = 0; i < nodes.size(); i++)
         {
             if (static_cast<in(int t>(i) == candidateIndex)
                 continue;
 
-            RequestVoteReply reply = raftNodes[i].handleRequestVote(request, clock.now());
-            raftNodes[candidateIndex].handleRequestVoteReply(reply);
+            sendVote(CandidateIndex, static_cast<int>(i));
         }
     };
 
