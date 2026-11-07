@@ -65,6 +65,13 @@ int main()
     broadcastRequestVote(0);
     broadcastRequestVote(1);
 
+    sendVote(0,2);
+    sendVote(1,3);
+    sendVote(0,3);
+    sendVote(1,2);
+    sendVote(0,1);
+    sendVote(1,0);
+
     for (size_t i = 0; i < nodes.size(); i++)
     {
         std::cout << "Node " << nodes[i].getId()
