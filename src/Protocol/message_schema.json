@@ -1,6 +1,7 @@
-{
+  {
   "type" : "cluster_update",
-  "timestamp" : "2026-08-31T14:23:00Z",
+  "time" : 7,
+
   "cluster_state" :
   {
     "total_node" : 5,
