@@ -113,5 +113,27 @@ int main()
         }
     }
 
+    int leadercount = 0;
+    for(size_t i =0; i <nodes.size() ; i++)
+    {
+        if(nodes[i].getState()== NodeState::Leader)
+        {
+            leadercount++;
+        }
+
+        if (leaderCount == 0)
+        {
+            std::cout << "OK: split vote, no leader after the first round" << std::endl;
+        }
+
+        else
+        {
+             std::cout << "FAIL: a leader was elected in the first round" << std::endl;
+        }
+
+
+    }
+
+
     return 0;
 }
