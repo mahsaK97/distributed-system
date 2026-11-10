@@ -1,4 +1,4 @@
-#include "../../include/Protocol/MessageSerializer.h
+#include "../../include/Protocol/MessageSerializer.h"
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
