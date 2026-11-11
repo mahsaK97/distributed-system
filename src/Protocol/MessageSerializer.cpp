@@ -17,7 +17,7 @@ std::string serializeRequestVote(const RequestVote &request)
 
 RequestVote deserializeRequestVote(const std::string &text)
 {
-    json j = json.parse(text);
+    json j = json::parse(text);
 
     RequestVote messages;
     messages.term = j.at("term").get<int>();
