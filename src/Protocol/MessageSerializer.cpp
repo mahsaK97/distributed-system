@@ -19,7 +19,7 @@ RequestVote deserializeRequestVote(const std::string &text)
 {
     json j = json::parse(text);
 
-    RequestVote messages;
+    RequestVote text;
     messages.term = j.at("term").get<int>();
     messages.candidateID = j.at("candidateID").get<int>();
     messages.lastLogIndex= j.at("lastLogIndex").get<int>();
