@@ -11,7 +11,7 @@ std::string serializeRequestVote(const RequestVote &request)
     j["candidate_id"] = request.candidateID;
     j["last_log_index"] = request.lastLogIndex;
     j["last_log_term"] = request.lastLogTerm;
-    return j.dump()
+    return j.dump();
 }
 
 
