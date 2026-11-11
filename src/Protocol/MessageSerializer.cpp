@@ -7,10 +7,10 @@ std::string serializeRequestVote(const RequestVote &request)
 {
     json j;
     j["type"]= "request_vote";
-    j["term"] =  messages.term;
-    j["candidate_id"] = messages.condidateID;
-    j["last_log_index"] = messages.lasLlogIndex;
-    j["last_log_term"] = messages.lastLogTerm;
+    j["term"] =  request.term;
+    j["candidate_id"] = request.condidateID;
+    j["last_log_index"] = request.lasLlogIndex;
+    j["last_log_term"] = request.lastLogTerm;
     return j.dump()
 }
 
