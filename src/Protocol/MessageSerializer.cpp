@@ -41,4 +41,12 @@ std::string serializeRequestVoteReply(const RequestVoteReply &requestvotereply)
     return j.dump();
 }
 
+RequestVoteReply deserializeRequestVoteReply(const std::string &text)
+{
+    json j=json::parse(text);
+    RequestVoteReply message;
+    message.term = j.at("term").get<int>();
+    message.voteGranted = j.at("vote_granted").get<bool>();
 
+    return message;
+}
