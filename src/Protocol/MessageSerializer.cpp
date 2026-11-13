@@ -30,4 +30,15 @@ RequestVote deserializeRequestVote(const std::string &text)
 
 
 
+std::string serializeRequestVoteReply(const RequestVoteReply &requestvotereply)
+{
+    json j;
+
+    j["type"] = "request_vote_reply";
+    j["term"] = requestvotereply.term;
+    j["vote_granted"] = requestvotereply.voteGranted;
+
+    return j.dump();
+}
+
 
