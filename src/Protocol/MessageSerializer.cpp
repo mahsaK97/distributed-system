@@ -20,10 +20,14 @@ RequestVote deserializeRequestVote(const std::string &text)
     json j = json::parse(text);
 
     RequestVote message;
-    messages.term = j.at("term").get<int>();
-    messages.candidateID = j.at("candidate_id").get<int>();
-    messages.lastLogIndex= j.at("last_Log_index").get<int>();
-    messages.lastLogTerm = j.at("last_Log_term").get<int>();
+    message.term = j.at("term").get<int>();
+    message.candidateID = j.at("candidate_id").get<int>();
+    message.lastLogIndex= j.at("last_Log_index").get<int>();
+    message.lastLogTerm = j.at("last_Log_term").get<int>();
 
     return message;
 }
+
+
+
+
