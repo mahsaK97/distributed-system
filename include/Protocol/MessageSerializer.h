@@ -6,7 +6,7 @@
 
 std::string nodeStateToString(NodeState state);
 
-std::string serializeRequestVote(const RequestVote &message);
+std::string serializeRequestVote(const RequestVote &request);
 
 RequestVote deserializeRequestVote(const std::string &text);
 
