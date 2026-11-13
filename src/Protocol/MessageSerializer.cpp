@@ -50,3 +50,23 @@ RequestVoteReply deserializeRequestVoteReply(const std::string &text)
 
     return message;
 }
+
+
+
+std::string nodeStateToString(NodeState state)
+{
+    switch (state)
+    {
+          case NodeState::Candidate:
+                 return "candidate";
+          case NodeState::Follower:
+                 return "follower";
+          case NodeState::Leader:
+                 return "leader";
+          case NodeState::Down:
+                 return "down";
+    }
+
+    return "unknown";
+
+}
