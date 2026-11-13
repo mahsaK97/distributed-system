@@ -10,7 +10,7 @@ std::string serializeRequestVote(const RequestVote &request);
 
 RequestVote deserializeRequestVote(const std::string &text);
 
-std::string serializeRequestVoteReply(const RequestVoteReply &message);
+std::string serializeRequestVoteReply(const RequestVoteReply &requestvotereply);
 
 RequestVoteReply deserializeRequestVoteReply(const std::string &text);
 
