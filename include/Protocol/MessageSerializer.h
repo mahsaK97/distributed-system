@@ -14,7 +14,7 @@ std::string serializeRequestVoteReply(const RequestVoteReply &requestvotereply);
 
 RequestVoteReply deserializeRequestVoteReply(const std::string &text);
 
-std::string makeClusterSnapeshot(const std::vector<Node> &nodes,
+std::string makeClusterSnapshot(const std::vector<Node> &nodes,
                                  const std::string &event,
                                  int tick);
 
