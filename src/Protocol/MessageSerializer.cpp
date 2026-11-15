@@ -75,6 +75,52 @@ std::string nodeStateToString(NodeState state)
 
 
 
+std::string makeClusterSnapshot(const std::vector<Node> &nodes,const std::string &event,int tick)
+{
+    json snapshot;
+    snapshot["type"] = "cluster_update";
+    snapshot["tick"] = tick;
+    j["event"] = event;
+    snapshot["nodes"]= json::array();
+
+    int currentTerm=0;
+    int leaderTerm =-1;
+
+    json leaderID=nullptr;
+
+    for(const NOde &node :nodes)
+    {
+        json nodeJson;
+
+        nodeJson["id"]=node.getId();
+        nodeJson["ip"]=node.getIp();
+        nodeJson["port"]=node.getPort();
+        nodeJson["state"] = nodeStateToString(node.getState);
+        nodeJson["term"] = node.getTerm();
+
+        snapshot["Nodes"].push_back(nodeJson);
+
+        if(node.getTerm() > currentTerm)
+        {
+            currentTerm=node.getTerm();
+        }
+        if(node.getState()== NodeState::Leader &&
+           node.getTerm() > leaderTerm)
+        {
+            leaderTerm = node.getTerm();
+            leaderID = node.getId();
+        }
+    }
+
+    snapshot["current_term"] = currentTerm;
+    snapshot["leader_id"] = leaderID;
+
+    return snapshot.dump(2);
+
+}
+
+
+
 
 
 
