@@ -39,7 +39,7 @@ int main()
     {
         RequestVote request {};
         request.term = nodes[from].getTerm();
-        request.candidateID nodes[from].getId();
+        request.candidateID =nodes[from].getId();
 
         RequestVoteReply reply = raftNodes[to].handleRequestVote(request, clock.now());
         raftNodes[from].handleRequestVoteReply(reply);
