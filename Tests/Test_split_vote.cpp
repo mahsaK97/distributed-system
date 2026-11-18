@@ -53,7 +53,7 @@ int main()
             if (static_cast<(int>(i) == candidateIndex)
                 continue;
 
-            sendVote(CandidateIndex, static_cast<int>(i));
+            sendVote(candidateIndex, static_cast<int>(i));
         }
     };
 
