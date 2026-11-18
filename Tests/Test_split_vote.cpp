@@ -62,9 +62,6 @@ int main()
     raftNodes[0].startElection(clock.now());
     raftNodes[1].startElection(clock.now());
 
-    broadcastRequestVote(0);
-    broadcastRequestVote(1);
-
     sendVote(0,2);
     sendVote(1,3);
     sendVote(0,3);
