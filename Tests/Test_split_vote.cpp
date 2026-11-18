@@ -121,7 +121,7 @@ int main()
             leadercount++;
         }
 
-        if (leaderCount == 0)
+        if (leadercount == 0)
         {
             std::cout << "OK: split vote, no leader after the first round" << std::endl;
         }
