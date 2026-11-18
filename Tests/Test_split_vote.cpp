@@ -38,7 +38,7 @@ int main()
     auto sendVote =[&](int from,int to)
     {
         RequestVote request {};
-        Request.term = nodes[from].getTerm();
+        request.term = nodes[from].getTerm();
         request.candidateID nodes[from].getId();
 
         RequestVoteReply reply = raftNodes[to].handleRequestVote(request, clock.now());
