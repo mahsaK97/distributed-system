@@ -50,7 +50,7 @@ int main()
     {
         for (size_t i = 0; i < nodes.size(); i++)
         {
-            if (static_cast<in(int t>(i) == candidateIndex)
+            if (static_cast<(int>(i) == candidateIndex)
                 continue;
 
             sendVote(CandidateIndex, static_cast<int>(i));
