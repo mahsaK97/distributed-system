@@ -95,7 +95,7 @@ std::string makeClusterSnapshot(const std::vector<Node> &nodes,const std::string
         nodeJson["id"]=node.getId();
         nodeJson["ip"]=node.getIp();
         nodeJson["port"]=node.getPort();
-        nodeJson["state"] = nodeStateToString(node.getState);
+        nodeJson["state"] = nodeStateToString(node.getState());
         nodeJson["term"] = node.getTerm();
 
         snapshot["Nodes"].push_back(nodeJson);
