@@ -88,7 +88,7 @@ std::string makeClusterSnapshot(const std::vector<Node> &nodes,const std::string
 
     json leaderID=nullptr;
 
-    for(const NOde &node :nodes)
+    for(const Node &node :nodes)
     {
         json nodeJson;
 
