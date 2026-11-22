@@ -80,7 +80,7 @@ std::string makeClusterSnapshot(const std::vector<Node> &nodes,const std::string
     json snapshot;
     snapshot["type"] = "cluster_update";
     snapshot["tick"] = tick;
-    j["event"] = event;
+    snapshot["event"] = event;
     snapshot["nodes"]= json::array();
 
     int currentTerm=0;
