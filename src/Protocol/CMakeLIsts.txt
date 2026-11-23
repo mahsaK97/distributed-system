@@ -1,0 +1,10 @@
+add_library(protocol
+LogEntry.cpp
+Message.cpp
+MessageQueue.cpp
+MessageSerialier.cpp
+)
+
+target_include_directories(protocol
+PUBLIC 
+${PROJECT_BINARY_DIR}/include)
