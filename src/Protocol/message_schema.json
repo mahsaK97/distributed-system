@@ -1,6 +1,7 @@
   {
   "type" : "cluster_update",
-  "time" : 7,
+  "event" : "leader_elected",
+  "tick" : 7,
 
   "cluster_state" :
   {
