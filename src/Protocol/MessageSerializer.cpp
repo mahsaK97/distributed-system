@@ -110,10 +110,15 @@ std::string makeClusterSnapshot(const std::vector<Node> &nodes,const std::string
             leaderTerm = node.getTerm();
             leaderID = node.getId();
         }
+
+
     }
 
-    snapshot["current_term"] = currentTerm;
-    snapshot["leader_id"] = leaderID;
+        snapshot["cluster_state"]["current_term"]=currentTerm;
+        snapshot["cluster_state"]["leader_id"]=leaderID;
+        snapshot["cluster_state"]["total_node"]=static_cast<int>(nodes.size());
+
+
 
     return snapshot.dump(2);
 
