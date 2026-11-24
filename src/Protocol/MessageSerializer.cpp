@@ -98,7 +98,7 @@ std::string makeClusterSnapshot(const std::vector<Node> &nodes,const std::string
         nodeJson["state"] = nodeStateToString(node.getState());
         nodeJson["term"] = node.getTerm();
 
-        snapshot["Nodes"].push_back(nodeJson);
+        snapshot["nodes"].push_back(nodeJson);
 
         if(node.getTerm() > currentTerm)
         {
